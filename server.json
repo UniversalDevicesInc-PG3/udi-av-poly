@@ -1,6 +1,6 @@
 {
     "name": "AVServer",
-    "docs": "https://github.com/whittedb/udi-av-poly",
+    "docs": "https://github.com/UniversalDevicesInc-PG3/udi-av-poly",
     "type": "python3",
     "executable": "udi-av-poly.py",
     "install": "install.sh",
@@ -8,14 +8,24 @@
     "notice": "No disclaimer here",
     "shortPoll": "10",
     "longPoll": "60",
+	"logLevel": "INFO",
     "credits": [
         {
             "title": "udi-av-poly: a generic A/V device NodeServer",
             "author": "Brad Whitted (whittedb)",
-            "version": "2.0.5",
-            "date": "June 28, 2018",
-            "source": "https://github.com/whittedb/udi-av-poly.git",
-            "license": "https://raw.githubusercontent.com/whittedb/udi-av-poly/master/LICENSE"
+            "version": "3.0.0",
+            "date": "September 20, 2021",
+            "source": "https://github.com/UniversalDevicesInc-PG3/udi-av-poly.git",
+            "license": "https://raw.githubusercontent.com/UniversalDevicesInc-PG3/udi-av-poly/master/LICENSE"
         }
-    ]
+    ],
+	"store": {
+		"developer": "bpaauwe@bobsplace.com",
+		"purchaseOptions": [
+			{
+				"isPerpetural": true,
+				"price": 0
+			}
+		]
+	}
 }

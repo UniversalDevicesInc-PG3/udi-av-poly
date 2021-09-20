@@ -1,4 +1,4 @@
-import polyinterface
+import udi_interface
 import logging
 import asyncore
 import struct
@@ -9,7 +9,7 @@ from threading import Thread, Event, Condition, Lock
 from av_devices.av_device import AvDevice
 
 
-LOGGER = polyinterface.LOGGER
+LOGGER = udi_interface.LOGGER
 
 
 @unique

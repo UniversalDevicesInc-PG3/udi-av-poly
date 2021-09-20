@@ -1,10 +1,10 @@
-import polyinterface
+import udi_interface
 from copy import deepcopy
 from ssdp.ssdp import SSDP
 from .pioneer_vsx1021_node import PioneerVSX1021Node
 from .sony_bravia_xbr_65x810c_node import SonyBraviaXBR65X810CNode
 
-LOGGER = polyinterface.LOGGER
+LOGGER = udi_interface.LOGGER
 
 
 SUPPORTED_DEVICES = [
@@ -36,7 +36,7 @@ class NodeFactory(SSDP.Listener):
     def ssdp_search(self):
         self._ssdp.search("ssdp:all")
 
-    def build(self, address=None, device_type=None, host=None, port=None, name=None):
+    def build(self, poly, address=None, device_type=None, host=None, port=None, name=None):
         """
         Build new node.
 
@@ -52,10 +52,10 @@ class NodeFactory(SSDP.Listener):
             return None
 
         if device_type == PioneerVSX1021Node.TYPE:
-            return PioneerVSX1021Node(controller=self._controller, primary=self._primary,
+            return PioneerVSX1021Node(controller=poly, primary=self._primary,
                                       address=address, host=host, port=port, name=name)
         if device_type == SonyBraviaXBR65X810CNode.TYPE:
-            return SonyBraviaXBR65X810CNode(controller=self._controller, primary=self._primary,
+            return SonyBraviaXBR65X810CNode(controller=poly, primary=self._primary,
                                             address=address, host=host, port=port, name=name)
 
         return None
@@ -75,7 +75,7 @@ class NodeFactory(SSDP.Listener):
         if device_type is not None:
             address = self.host_port_to_address(ssdp_response.host, ssdp_response.port)
             name = "{}_{}_{}".format(ssdp_response.model, ssdp_response.host, ssdp_response.port)
-            node = self.build(address=address, device_type=device_type,
+            node = self.build(self._controller.poly, address=address, device_type=device_type,
                               host=ssdp_response.host, port=ssdp_response.port, name=name)
             if node is not None:
                 for l in self._ssdpListeners:
@@ -86,24 +86,14 @@ class NodeFactory(SSDP.Listener):
         Load device info for node creation from customParams.  Requires host IP:PORT
             VSX1021xxxx = 192.168.1.1:23
 
-        Misc keys:
-            debugMode:
-                0, 10, 20, 30, 40, 50 (All, Debug, Info, Warning, Error, Critical)
         """
-
-        v = self._controller.getCustomParam("debugMode")
-        if v is None:
-            self._controller.addCustomParam({"debugMode": self._controller.debug_mode})
-        else:
-            self._controller.debug_mode = v
 
         self._controller.l_info("load_params", "{} devices supported".format(len(SUPPORTED_DEVICES)))
         devices = {}
         for device_type in SUPPORTED_DEVICES:
-            params = deepcopy(self._controller.polyConfig["customParams"])
-            for k, v in params.items():
+            for k in self._controller.CustomParams:
                 if k.startswith(device_type):
-                    host_port = v
+                    host_port = self._controller.CustomParams[k]
                     name = device_type + "_" + host_port.replace(":", "_")
 
                     # Validate port exists in custom parameter value

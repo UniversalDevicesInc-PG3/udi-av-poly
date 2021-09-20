@@ -1,10 +1,10 @@
-import polyinterface
+import udi_interface
 from .av_node import AVNode
 from av_devices.av_device import AvDevice
 from av_devices import PioneerVSX1021Device
 
 
-LOGGER = polyinterface.LOGGER
+LOGGER = udi_interface.LOGGER
 
 
 class PioneerVSX1021Node(AVNode, AvDevice.Listener):

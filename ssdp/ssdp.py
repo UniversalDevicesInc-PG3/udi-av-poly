@@ -1,4 +1,4 @@
-import polyinterface
+import udi_interface
 import os
 import socket
 import select
@@ -9,7 +9,7 @@ from queue import PriorityQueue, Empty
 import requests
 import xmltodict
 
-LOGGER = polyinterface.LOGGER
+LOGGER = udi_interface.LOGGER
 
 
 class SSDPResponse(object):

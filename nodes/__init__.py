@@ -1,7 +1,7 @@
 
 """ Node classes used by the Wireless Sensor Tags Node Server. """
 
-import polyinterface
+import udi_interface
 
 from .av_controller import AVController
 from .av_node import AVNode

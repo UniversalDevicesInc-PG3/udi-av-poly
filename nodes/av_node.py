@@ -2,13 +2,13 @@
 This is a NodeServer for the Pioneer VSX-1021 A/V Receiver for Polyglot v2 written in Python3
 by Brad Whitted brad_whitted@gmail.com
 """
-import polyinterface
+import udi_interface
 from enum import Enum, unique
 
-LOGGER = polyinterface.LOGGER
+LOGGER = udi_interface.LOGGER
 
 
-class AVNode(polyinterface.Node):
+class AVNode(udi_interface.Node):
     """
     This is the class that all the Nodes will be represented by.  You will add this to
     Polyglot/ISY with the controller.addNode method

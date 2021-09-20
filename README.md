@@ -1,6 +1,6 @@
 # A/V NodeServer for PolyGlot V2
 
-This is a generic A/V device node server for the [Universal Devices ISY994i](https://www.universal-devices.com/residential/ISY) [Polyglot interface](http://www.universal-devices.com/developers/polyglot/docs/) with  [Polyglot V2](https://github.com/Einstein42/udi-polyglotv2)
+This is a generic A/V device node server for the [Universal Devices ISY Controller](https://www.universal-devices.com/residential/ISY)
 
 (c) Brad Whitted
 MIT License
@@ -182,7 +182,6 @@ parameters, then you'll need to restart the nodeserver after they are defined.
 ### Installation
 1. Backup Your ISY in case of problems!  **Really, do the backup, please**
 2. Go to the Polyglot Store in the UI and install A/VServer.
-3. Add A/VServer NodeServer in Polyglot
 4. Open Admin Console (if you already had it open, then close and re-open)
 5. You should now have a node called AV Controller
 6. Add appropriate custom parameters for your device if the SSDP searach didn't find them (see How it works above)
@@ -193,9 +192,9 @@ controller page to force an SSDP search.  If you have to add custom parameters, 
 will be required.
 
 ### Requirements
-1. [Polyglot V2](https://github.com/UniversalDevicesInc/polyglot-v2) >= 2.2.0
-2. This has only been tested with ISY 5.0.12 so it is not confirmed to work with any prior version.
-3. Tested on Raspberry Pi Jessie
+1. A Polisy running Polyglot V3
+2. This has only been tested with ISY 5.3.x or later
+3. A support Pioneer or Sony device
 
 ### Developer perspective:
 This nodeserver is built on a state machine framework using the transitions python3 library.  Adding support for

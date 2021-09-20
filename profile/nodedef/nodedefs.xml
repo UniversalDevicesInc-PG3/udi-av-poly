@@ -13,17 +13,11 @@
             <st id="GV3" editor="I_INTEGER"/>
             <!-- Heartbeat -->
             <st id="GV4" editor="I_HB"/>
-            <!-- Debug (Log) Mode -->
-            <st id="GV5" editor="I_DM"/>
         </sts>
         <cmds>
             <sends/>
             <accepts>
-                <cmd id="SET_DM">
-                    <p id="" editor="I_DM" init="GV6"/>
-                </cmd>
                 <cmd id="DISCOVER"/>
-                <cmd id="UPDATE_PROFILE"/>
             </accepts>
         </cmds>
     </nodeDef>

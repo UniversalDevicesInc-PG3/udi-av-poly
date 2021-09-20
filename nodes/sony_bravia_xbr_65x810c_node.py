@@ -1,10 +1,10 @@
-import polyinterface
+import udi_interface
 from .av_node import AVNode
 from av_devices.av_device import AvDevice
 from av_devices import SonyBraviaXBR65X810CDevice
 from av_devices.sony_bravia_xbr_65x810c_device import IrccCommands
 
-LOGGER = polyinterface.LOGGER
+LOGGER = udi_interface.LOGGER
 
 
 class SonyBraviaXBR65X810CNode(AVNode, AvDevice.Listener):
