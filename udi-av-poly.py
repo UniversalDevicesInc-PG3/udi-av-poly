@@ -36,7 +36,7 @@ if __name__ == "__main__":
         """
         Instantiates the Interface to Polyglot.
         """
-        polyglot.start()
+        polyglot.start('3.0.0')
         """
         Starts MQTT and connects to Polyglot.
         """

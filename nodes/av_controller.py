@@ -77,7 +77,7 @@ class AVController(udi_interface.Node, NodeFactory.SsdpListener):
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
 
         self.poly.ready()
-        self.poly.addNode(self)
+        self.poly.addNode(self, conn_status="ST")
 
     def parameterHandler(self, params):
         self.CustomParams.load(params)
